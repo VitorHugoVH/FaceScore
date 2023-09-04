@@ -1,0 +1,57 @@
+<resources>
+    <string name="app_name">FaceScore</string>
+    <string name="logo_description">Imagem logo Face Score\n</string>
+    <string name="bem_vindo_tela_inicial">Bem-vindo à tela inicial!</string>
+    <string name="LogIn">Log In</string>
+    <string name="subtitulo_login">O quão belo você pode ser</string>
+    <string name="hint_username">Username</string>
+    <string name="hint_password">Password</string>
+    <string name="sing_up">Sing up</string>
+    <string name="esqueceu_sua_senha">Esqueceu sua senha?</string>
+    <string name="recuperar_senha">Recuperar senha</string>
+    <string name="sem_cadastro">Não sou cadastrado</string>
+    <string name="txt_cadastrar">Cadastrar</string>
+    <string name="forgot_password">Forgot Password ?</string>
+    <string name="subtitulo_recuperar_senha">Abra seu email e recupere sua senha</string>
+    <string name="hint_email">E-mail</string>
+    <string name="txt_send_code">Enviar código</string>
+    <string name="tentar_fazer_login_novamente">Tentar fazer login novamente.</string>
+    <string name="txt_register">Register</string>
+    <string name="txt_first_name">First Name:</string>
+    <string name="label_country">Country:</string>
+    <string name="hint_first_name">Primeiro nome</string>
+    <string name="hint_sobrenome">Sobrenome</string>
+    <string name="label_state">State:</string>
+    <string name="city_label">City:</string>
+    <string name="hint_city">São Paulo</string>
+    <string name="txt_last_name">Last Name:</string>
+    <string name="txt_email">Email:</string>
+    <string name="hint_input_email">yourprincipalemail@gmail.com</string>
+    <string name="txt_password">Password:</string>
+    <string name="hint_password_input">************</string>
+    <string name="txt_aniversario">Date of birth</string>
+    <string name="btn_register">Register</string>
+    <string name="txt_termos_condicao">Declaro que possuo mais de 18 anos</string>
+    <string name="hint_email_user">Email</string>
+    <string-array name="options_array">
+        <item>Argentina</item>
+        <item>Bolívia</item>
+        <item>Brasil</item>
+        <item>Chile</item>
+        <item>Colômbia</item>
+        <item>Costa Rica</item>
+        <item>Cuba</item>
+        <item>Equador</item>
+        <item>El Salvador</item>
+        <item>Guatemala</item>
+        <item>Honduras</item>
+        <item>México</item>
+        <item>Nicarágua</item>
+        <item>Panamá</item>
+        <item>Paraguai</item>
+        <item>Peru</item>
+        <item>República Dominicana</item>
+        <item>Uruguai</item>
+        <item>Venezuela</item>
+    </string-array>
+</resources>
