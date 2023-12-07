@@ -1,323 +1,353 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/pink_backgroud"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/rosa">
 
-    <View
-        android:id="@+id/pink_backgroud"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/rosa" />
+        android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/img_return"
-        android:layout_width="41dp"
-        android:layout_height="50dp"
-        android:src="@drawable/baseline_arrow_back_24"
-        app:layout_constraintStart_toStartOf="@id/pink_backgroud"
-        app:layout_constraintTop_toTopOf="@id/pink_backgroud" />
+        <View
+            android:id="@+id/pink_backgroud"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/rosa" />
 
-    <TextView
-        android:id="@+id/txt_register"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:fontFamily="sans-serif"
-        android:text="@string/txt_register"
-        android:textColor="@color/white"
-        android:textSize="45sp"
-        app:layout_constraintStart_toStartOf="@id/img_return"
-        app:layout_constraintTop_toBottomOf="@id/img_return" />
+        <ImageView
+            android:id="@+id/img_return"
+            android:layout_width="41dp"
+            android:layout_height="50dp"
+            android:src="@drawable/baseline_arrow_back_24"
+            app:layout_constraintStart_toStartOf="@id/pink_backgroud"
+            app:layout_constraintTop_toTopOf="@id/pink_backgroud" />
 
-    <TextView
-        android:id="@+id/label_input_nome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="@string/txt_first_name"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@id/txt_register"
-        app:layout_constraintTop_toBottomOf="@id/txt_register" />
+        <TextView
+            android:id="@+id/txt_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:fontFamily="sans-serif"
+            android:text="@string/txt_register"
+            android:textColor="@color/white"
+            android:textSize="40sp"
+            app:layout_constraintStart_toStartOf="@id/img_return"
+            app:layout_constraintTop_toBottomOf="@id/img_return" />
 
-    <EditText
-        android:id="@+id/input_first_name"
-        android:layout_width="157dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/inputs_radius"
-        android:hint="@string/hint_first_name"
-        android:inputType="text"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp"
-        android:maxLength="25"
-        app:layout_constraintStart_toStartOf="@id/label_input_nome"
-        app:layout_constraintTop_toBottomOf="@id/label_input_nome"
-        app:layout_constraintBottom_toTopOf="@id/label_county"/>
+        <TextView
+            android:id="@+id/label_input_nome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:text="Nome Completo"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@id/txt_register"
+            app:layout_constraintTop_toBottomOf="@id/txt_register" />
 
-    <TextView
-        android:id="@+id/label_last_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="120dp"
-        android:text="@string/txt_last_name"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@id/label_input_nome"
-        app:layout_constraintStart_toEndOf="@id/label_input_nome"
-        app:layout_constraintTop_toTopOf="@id/label_input_nome" />
+        <EditText
+            android:id="@+id/input_first_name"
+            android:layout_width="370dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/inputs_radius"
+            android:hint="Nome completo"
+            android:inputType="text"
+            android:maxLength="50"
+            android:paddingStart="10dp"
+            android:layout_marginEnd="20dp"
+            android:paddingEnd="10dp"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toTopOf="@id/label_county"
+            app:layout_constraintStart_toStartOf="@id/label_input_nome"
+            app:layout_constraintTop_toBottomOf="@id/label_input_nome"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
-    <EditText
-        android:id="@+id/input_last_name"
-        android:layout_width="157dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/inputs_radius"
-        android:hint="@string/hint_sobrenome"
-        android:paddingStart="10dp"
-        app:layout_constraintStart_toStartOf="@id/label_last_name"
-        app:layout_constraintTop_toBottomOf="@id/label_last_name" />
+        <TextView
+            android:id="@+id/label_county"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="@string/label_country"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@id/input_first_name"
+            app:layout_constraintTop_toBottomOf="@id/input_first_name" />
 
-    <TextView
-        android:id="@+id/label_county"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:text="@string/label_country"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@id/input_first_name"
-        app:layout_constraintTop_toBottomOf="@id/input_first_name" />
+        <Spinner
+            android:id="@+id/input_pais"
+            android:layout_width="370dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/inputs_radius"
+            android:entries="@array/options_array"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="@id/label_county"
+            app:layout_constraintTop_toBottomOf="@id/label_county"
+            app:layout_constraintEnd_toEndOf="@id/input_first_name"/>
 
-    <Spinner
-        android:id="@+id/input_pais"
-        android:layout_width="370dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/inputs_radius"
-        android:entries="@array/options_array"
-        app:layout_constraintEnd_toEndOf="@id/input_last_name"
-        app:layout_constraintStart_toStartOf="@id/label_county"
-        app:layout_constraintTop_toBottomOf="@id/label_county" />
+        <ImageView
+            android:id="@+id/img_selecionar_pais"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/baseline_keyboard_double_arrow_down_24"
+            app:layout_constraintBottom_toBottomOf="@id/input_pais"
+            app:layout_constraintEnd_toEndOf="@id/input_pais"
+            app:layout_constraintTop_toTopOf="@id/input_pais" />
 
-    <ImageView
-        android:id="@+id/img_selecionar_pais"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="10dp"
-        android:src="@drawable/baseline_keyboard_double_arrow_down_24"
-        app:layout_constraintBottom_toBottomOf="@id/input_pais"
-        app:layout_constraintEnd_toEndOf="@id/input_pais"
-        app:layout_constraintTop_toTopOf="@id/input_pais" />
+        <TextView
+            android:id="@+id/label_cep"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="CEP:"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@id/input_pais"
+            app:layout_constraintTop_toBottomOf="@id/input_pais" />
 
-    <TextView
-        android:id="@+id/label_cep"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:text="CEP:"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@id/input_pais"
-        app:layout_constraintTop_toBottomOf="@id/input_pais" />
+        <EditText
+            android:id="@+id/input_cep"
+            android:layout_width="125dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/inputs_radius"
+            android:hint="00000-000"
+            android:inputType="text"
+            android:maxLength="9"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="@id/label_cep"
+            app:layout_constraintTop_toBottomOf="@id/label_cep" />
 
-    <EditText
-        android:id="@+id/input_cep"
-        android:layout_width="125dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/inputs_radius"
-        android:hint="00000-000"
-        android:inputType="text"
-        android:textAlignment="center"
-        app:layout_constraintStart_toStartOf="@id/label_cep"
-        app:layout_constraintTop_toBottomOf="@id/label_cep" />
+        <TextView
+            android:id="@+id/label_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="@string/label_state"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@id/label_cep"
+            app:layout_constraintStart_toEndOf="@id/input_cep"
+            app:layout_constraintTop_toTopOf="@id/label_cep" />
 
-    <TextView
-        android:id="@+id/label_state"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:text="@string/label_state"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@id/label_cep"
-        app:layout_constraintStart_toEndOf="@id/input_cep"
-        app:layout_constraintTop_toTopOf="@id/label_cep" />
+        <EditText
+            android:id="@+id/input_state"
+            android:layout_width="80dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/inputs_radius"
+            android:hint="SP"
+            android:inputType="textCapCharacters"
+            android:maxLength="2"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@id/input_cep"
+            app:layout_constraintStart_toStartOf="@id/label_state"
+            app:layout_constraintTop_toBottomOf="@id/label_state" />
 
-    <EditText
-        android:id="@+id/input_state"
-        android:layout_width="80dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/inputs_radius"
-        android:hint="SP"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="@id/input_cep"
-        app:layout_constraintStart_toStartOf="@id/label_state"
-        app:layout_constraintTop_toBottomOf="@id/label_state" />
+        <TextView
+            android:id="@+id/label_city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100dp"
+            android:text="@string/city_label"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@id/label_state"
+            app:layout_constraintStart_toStartOf="@id/label_state"
+            app:layout_constraintTop_toTopOf="@id/label_state" />
 
-    <TextView
-        android:id="@+id/label_city"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="100dp"
-        android:text="@string/city_label"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@id/label_state"
-        app:layout_constraintTop_toTopOf="@id/label_state"
-        app:layout_constraintBottom_toBottomOf="@id/label_state"/>
+        <EditText
+            android:id="@+id/input_city"
+            android:layout_width="125dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/inputs_radius"
+            android:hint="@string/hint_city"
+            android:inputType="text"
+            android:maxLength="25"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@id/input_state"
+            app:layout_constraintStart_toStartOf="@id/label_city"
+            app:layout_constraintTop_toBottomOf="@id/label_city"
+            app:layout_constraintEnd_toEndOf="@id/input_first_name"/>
 
-    <EditText
-        android:id="@+id/input_city"
-        android:layout_width="125dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="10dp"
-        android:hint="@string/hint_city"
-        android:paddingStart="10dp"
-        android:inputType="text"
-        android:background="@drawable/inputs_radius"
-        app:layout_constraintTop_toBottomOf="@id/label_city"
-        app:layout_constraintBottom_toBottomOf="@id/input_state"
-        app:layout_constraintStart_toStartOf="@id/label_city"/>
+        <TextView
+            android:id="@+id/label_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="@string/txt_email"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@id/input_cep"
+            app:layout_constraintTop_toBottomOf="@id/input_cep" />
 
-    <TextView
-        android:id="@+id/label_email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/txt_email"
-        android:textSize="20sp"
-        android:layout_marginTop="14dp"
-        android:textColor="@color/white"
-        app:layout_constraintTop_toBottomOf="@id/input_cep"
-        app:layout_constraintStart_toStartOf="@id/input_cep" />
+        <EditText
+            android:id="@+id/input_email"
+            android:layout_width="370dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/inputs_radius"
+            android:hint="@string/hint_input_email"
+            android:inputType="textEmailAddress"
+            android:maxLength="50"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="@id/label_email"
+            app:layout_constraintTop_toBottomOf="@id/label_email"
+            app:layout_constraintEnd_toEndOf="@id/input_first_name"/>
 
-    <EditText
-        android:id="@+id/input_email"
-        android:layout_width="370dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="10dp"
-        android:hint="@string/hint_input_email"
-        android:paddingStart="10dp"
-        android:inputType="textEmailAddress"
-        android:background="@drawable/inputs_radius"
-        app:layout_constraintTop_toBottomOf="@id/label_email"
-        app:layout_constraintStart_toStartOf="@id/label_email"/>
+        <TextView
+            android:id="@+id/label_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="@string/txt_password"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@id/input_email"
+            app:layout_constraintTop_toBottomOf="@id/input_email" />
 
-    <TextView
-        android:id="@+id/label_password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/txt_password"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:layout_marginTop="14dp"
-        app:layout_constraintTop_toBottomOf="@id/input_email"
-        app:layout_constraintStart_toStartOf="@id/input_email"/>
+        <EditText
+            android:id="@+id/input_password"
+            android:layout_width="370dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/inputs_radius"
+            android:hint="@string/hint_password_input"
+            android:inputType="textPassword"
+            android:paddingStart="10dp"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="@id/label_password"
+            app:layout_constraintTop_toBottomOf="@id/label_password"
+            app:layout_constraintEnd_toEndOf="@id/input_first_name"/>
 
-    <EditText
-        android:id="@+id/input_password"
-        android:layout_width="370dp"
-        android:layout_height="36dp"
-        android:inputType="textPassword"
-        android:layout_marginTop="5dp"
-        android:hint="@string/hint_password_input"
-        android:paddingStart="10dp"
-        android:background="@drawable/inputs_radius"
-        app:layout_constraintTop_toBottomOf="@id/label_password"
-        app:layout_constraintStart_toStartOf="@id/label_password"/>
+        <ImageButton
+            android:id="@+id/img_eye"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:background="@color/transparent"
+            android:src="@drawable/baseline_remove_red_eye_24"
+            app:layout_constraintBottom_toBottomOf="@id/input_password"
+            app:layout_constraintEnd_toEndOf="@id/input_password"
+            app:layout_constraintTop_toTopOf="@id/input_password" />
 
-    <ImageView
-        android:id="@+id/img_eye"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="10dp"
-        android:src="@drawable/baseline_remove_red_eye_24"
-        app:layout_constraintTop_toTopOf="@id/input_password"
-        app:layout_constraintBottom_toBottomOf="@id/input_password"
-        app:layout_constraintEnd_toEndOf="@id/input_password"/>
+        <TextView
+            android:id="@+id/label_aniversario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="@string/txt_aniversario"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@id/label_password"
+            app:layout_constraintTop_toBottomOf="@id/input_password" />
 
-    <TextView
-        android:id="@+id/label_aniversario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:layout_marginTop="14dp"
-        android:text="@string/txt_aniversario"
-        app:layout_constraintTop_toBottomOf="@id/input_password"
-        app:layout_constraintStart_toStartOf="@id/label_password"/>
+        <EditText
+            android:id="@+id/input_aniversario"
+            android:layout_width="370dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/inputs_radius"
+            android:hint="dd / mm / yyyy"
+            android:inputType="date"
+            android:paddingStart="10dp"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="@id/label_aniversario"
+            app:layout_constraintTop_toBottomOf="@id/label_aniversario"
+            app:layout_constraintEnd_toEndOf="@id/input_first_name"/>
 
-    <EditText
-        android:id="@+id/input_aniversario"
-        android:layout_width="370dp"
-        android:layout_height="36dp"
-        android:background="@drawable/inputs_radius"
-        android:hint="dd / mm / yyyy"
-        android:paddingStart="10dp"
-        android:layout_marginTop="5dp"
-        android:inputType="date"
-        app:layout_constraintTop_toBottomOf="@id/label_aniversario"
-        app:layout_constraintStart_toStartOf="@id/label_aniversario"/>
+        <ImageView
+            android:id="@+id/icon_date_aniversario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/baseline_date_range_24"
+            app:layout_constraintBottom_toBottomOf="@id/input_aniversario"
+            app:layout_constraintEnd_toEndOf="@id/input_aniversario"
+            app:layout_constraintTop_toTopOf="@id/input_aniversario" />
 
-    <ImageView
-        android:id="@+id/icon_date_aniversario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="10dp"
-        android:src="@drawable/baseline_date_range_24"
-        app:layout_constraintTop_toTopOf="@id/input_aniversario"
-        app:layout_constraintEnd_toEndOf="@id/input_aniversario"
-        app:layout_constraintBottom_toBottomOf="@id/input_aniversario" />
+        <TextView
+            android:id="@+id/label_genero"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="Gênero"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@id/label_password"
+            app:layout_constraintTop_toBottomOf="@id/input_aniversario" />
 
-    <Button
-        android:id="@+id/btn_singup"
-        android:layout_width="350dp"
-        android:layout_height="60dp"
-        android:backgroundTint="@color/white"
-        android:textStyle="bold"
-        android:shadowColor="@color/black"
-        android:text="@string/btn_register"
-        android:textColor="@color/rosaLink"
-        android:textSize="24sp"
-        android:layout_marginTop="30dp"
-        app:layout_constraintTop_toBottomOf="@id/input_aniversario"
-        app:layout_constraintStart_toStartOf="@id/input_aniversario"
-        app:layout_constraintEnd_toEndOf="@id/input_aniversario" />
+        <Spinner
+            android:id="@+id/input_genero"
+            android:layout_width="370dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/inputs_radius"
+            android:entries="@array/options_genero"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="@id/label_genero"
+            app:layout_constraintTop_toBottomOf="@id/label_genero"
+            app:layout_constraintEnd_toEndOf="@id/input_first_name"/>
 
-    <ImageView
-        android:id="@+id/img_register"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="10dp"
-        android:src="@drawable/baseline_arrow_right_alt_24"
-        app:layout_constraintTop_toTopOf="@id/btn_singup"
-        app:layout_constraintBottom_toBottomOf="@id/btn_singup"
-        app:layout_constraintEnd_toEndOf="@id/btn_singup"/>
+        <Button
+            android:id="@+id/btn_singup"
+            android:layout_width="350dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/white"
+            android:shadowColor="@color/black"
+            android:text="@string/btn_register"
+            android:textColor="@color/rosaLink"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/input_aniversario"
+            app:layout_constraintStart_toStartOf="@id/input_aniversario"
+            app:layout_constraintTop_toBottomOf="@id/input_genero" />
 
-    <TextView
-        android:id="@+id/txt_termos_de_condicao"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/txt_termos_condicao"
-        android:textSize="14sp"
-        android:layout_marginTop="10dp"
-        android:paddingLeft="5dp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/btn_singup"
-        app:layout_constraintEnd_toEndOf="@id/btn_singup"
-        app:layout_constraintStart_toStartOf="@id/btn_singup"/>
+        <ImageView
+            android:id="@+id/img_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/baseline_arrow_right_alt_24"
+            app:layout_constraintBottom_toBottomOf="@id/btn_singup"
+            app:layout_constraintEnd_toEndOf="@id/btn_singup"
+            app:layout_constraintTop_toTopOf="@id/btn_singup" />
 
-    <CheckBox
-        android:id="@+id/check_declaracao"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:backgroundTint="@color/white"
-        app:layout_constraintEnd_toStartOf="@id/txt_termos_de_condicao"
-        app:layout_constraintTop_toTopOf="@id/txt_termos_de_condicao"
-        app:layout_constraintBottom_toBottomOf="@id/txt_termos_de_condicao" />
+        <TextView
+            android:id="@+id/txt_termos_de_condicao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="5dp"
+            android:text="@string/txt_termos_condicao"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/btn_singup"
+            app:layout_constraintStart_toStartOf="@id/btn_singup"
+            app:layout_constraintTop_toBottomOf="@id/btn_singup" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <CheckBox
+            android:id="@+id/check_declaracao"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:backgroundTint="@color/white"
+            app:layout_constraintBottom_toBottomOf="@id/txt_termos_de_condicao"
+            app:layout_constraintEnd_toStartOf="@id/txt_termos_de_condicao"
+            app:layout_constraintTop_toTopOf="@id/txt_termos_de_condicao" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

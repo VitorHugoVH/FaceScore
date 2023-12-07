@@ -1,147 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#FFFF"
     tools:context=".view.home.HomeActivity">
 
-    <View
-        android:id="@+id/pink_backgroud"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/rosa" />
+        android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="100sp"
-        android:layout_height="100sp"
-        android:src="@drawable/logo"
-        android:elevation="9sp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/option_ranking"
-        app:layout_constraintStart_toStartOf="parent" />
+        <View
+            android:id="@+id/pink_backgroud"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@color/rosa" />
 
-    <View
-        android:id="@+id/option_ranking"
-        android:layout_width="206sp"
-        android:layout_height="197sp"
-        android:layout_marginTop="140dp"
-        android:background="@color/white"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <ImageView
+            android:id="@+id/logo_capa"
+            android:layout_width="400sp"
+            android:layout_height="150sp"
+            android:src="@drawable/capalogo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/btn_ranking"
-        android:layout_width="86dp"
-        android:layout_height="86dp"
-        android:background="@color/transparent"
-        android:src="@drawable/baseline_equalizer_24"
-        app:layout_constraintTop_toTopOf="@id/option_ranking"
-        app:layout_constraintBottom_toBottomOf="@id/option_ranking"
-        app:layout_constraintStart_toStartOf="@id/option_ranking"
-        app:layout_constraintEnd_toEndOf="@id/option_ranking"/>
+        <ImageView
+            android:id="@+id/option_ranking"
+            android:layout_width="206sp"
+            android:layout_height="197sp"
+            android:layout_marginTop="60sp"
+            android:background="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/logo_capa"
+            app:layout_constraintBottom_toTopOf="@id/option_group"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    <View
-        android:id="@+id/option_profile"
-        android:layout_width="206sp"
-        android:layout_height="197sp"
-        android:background="@color/white"
-        app:layout_constraintTop_toTopOf="@id/option_ranking"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/option_ranking"
-        app:layout_constraintStart_toEndOf="@id/option_ranking"/>
+        <ImageButton
+            android:id="@+id/btn_ranking"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:src="@drawable/worldicon"
+            app:layout_constraintBottom_toBottomOf="@id/option_ranking"
+            app:layout_constraintEnd_toEndOf="@id/option_ranking"
+            app:layout_constraintStart_toStartOf="@id/option_ranking"
+            app:layout_constraintTop_toTopOf="@id/option_ranking" />
 
-    <ImageButton
-        android:id="@+id/btn_profile"
-        android:layout_width="86dp"
-        android:layout_height="86dp"
-        android:background="@color/transparent"
-        android:src="@drawable/person_profile"
-        app:layout_constraintBottom_toBottomOf="@id/option_profile"
-        app:layout_constraintEnd_toEndOf="@id/option_profile"
-        app:layout_constraintStart_toStartOf="@id/option_profile"
-        app:layout_constraintTop_toTopOf="@id/option_profile" />
+        <ImageView
+            android:id="@+id/option_profille"
+            android:layout_width="206sp"
+            android:layout_height="197sp"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="@id/option_ranking"
+            app:layout_constraintStart_toEndOf="@id/option_ranking"
+            app:layout_constraintTop_toTopOf="@id/option_ranking"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
-    <View
-        android:id="@+id/option_grupo"
-        android:layout_width="206sp"
-        android:layout_height="197sp"
-        android:background="@color/white"
-        app:layout_constraintTop_toBottomOf="@id/option_ranking"
-        app:layout_constraintStart_toStartOf="@id/option_ranking"
-        app:layout_constraintEnd_toEndOf="@id/option_ranking"/>
+        <ImageButton
+            android:id="@+id/btn_profille"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:src="@drawable/usericon"
+            app:layout_constraintBottom_toBottomOf="@id/option_profille"
+            app:layout_constraintEnd_toEndOf="@id/option_profille"
+            app:layout_constraintStart_toStartOf="@id/option_profille"
+            app:layout_constraintTop_toTopOf="@id/option_profille" />
 
-    <ImageButton
-        android:id="@+id/btn_group"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/transparent"
-        android:src="@drawable/baseline_groups_24"
-        app:layout_constraintTop_toTopOf="@id/option_grupo"
-        app:layout_constraintStart_toStartOf="@id/option_grupo"
-        app:layout_constraintBottom_toBottomOf="@id/option_grupo"
-        app:layout_constraintEnd_toEndOf="@id/option_grupo"/>
+        <ImageView
+            android:id="@+id/option_group"
+            android:layout_width="206sp"
+            android:layout_height="197sp"
+            android:background="@color/white"
+            app:layout_constraintBottom_toTopOf="@id/option_config"
+            app:layout_constraintEnd_toEndOf="@id/option_ranking"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    <View
-        android:id="@+id/option_scanface"
-        android:layout_width="206sp"
-        android:layout_height="197sp"
-        android:background="@color/white"
-        app:layout_constraintTop_toBottomOf="@id/option_profile"
-        app:layout_constraintStart_toStartOf="@id/option_profile"
-        app:layout_constraintBottom_toBottomOf="@id/option_grupo"
-        app:layout_constraintEnd_toEndOf="@id/option_profile"/>
+        <ImageButton
+            android:id="@+id/btn_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:src="@drawable/icongroup"
+            app:layout_constraintBottom_toBottomOf="@id/option_group"
+            app:layout_constraintEnd_toEndOf="@id/option_group"
+            app:layout_constraintStart_toStartOf="@id/option_group"
+            app:layout_constraintTop_toTopOf="@id/option_group" />
 
-    <ImageButton
-        android:id="@+id/btn_scanface"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/transparent"
-        android:src="@drawable/baseline_face_retouching_natural_24"
-        app:layout_constraintTop_toBottomOf="@id/option_profile"
-        app:layout_constraintStart_toStartOf="@id/option_scanface"
-        app:layout_constraintBottom_toBottomOf="@id/option_scanface"
-        app:layout_constraintEnd_toEndOf="@id/option_scanface"/>
+        <ImageView
+            android:id="@+id/option_scan"
+            android:layout_width="206sp"
+            android:layout_height="197sp"
+            android:background="@color/white"
+            app:layout_constraintEnd_toEndOf="@id/option_profille"
+            app:layout_constraintStart_toEndOf="@id/option_group"
+            app:layout_constraintTop_toBottomOf="@id/option_profille" />
 
-    <View
-        android:id="@+id/option_config"
-        android:layout_width="209sp"
-        android:layout_height="197sp"
-        android:background="@color/white"
-        app:layout_constraintTop_toBottomOf="@id/option_grupo"
-        app:layout_constraintStart_toStartOf="@id/option_grupo"
-        app:layout_constraintBottom_toBottomOf="@id/option_logout"/>
+        <ImageButton
+            android:id="@+id/btn_scan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:src="@drawable/faceincon"
+            app:layout_constraintBottom_toBottomOf="@id/option_scan"
+            app:layout_constraintEnd_toEndOf="@id/option_scan"
+            app:layout_constraintStart_toStartOf="@id/option_scan"
+            app:layout_constraintTop_toTopOf="@id/option_scan" />
 
-    <ImageButton
-        android:id="@+id/btn_config"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/transparent"
-        android:src="@drawable/baseline_settings_24"
-        app:layout_constraintTop_toTopOf="@id/option_config"
-        app:layout_constraintBottom_toBottomOf="@id/option_config"
-        app:layout_constraintStart_toStartOf="@id/option_config"
-        app:layout_constraintEnd_toEndOf="@id/option_config"/>
+        <ImageView
+            android:id="@+id/option_config"
+            android:layout_width="206sp"
+            android:layout_height="197sp"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/option_group"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    <View
-        android:id="@+id/option_logout"
-        android:layout_width="206sp"
-        android:layout_height="197sp"
-        android:background="@color/white"
-        app:layout_constraintTop_toBottomOf="@id/option_scanface"
-        app:layout_constraintStart_toStartOf="@id/option_scanface"
-        app:layout_constraintEnd_toEndOf="@id/option_scanface"/>
+        <ImageButton
+            android:id="@+id/btn_config"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:src="@drawable/iconconfig"
+            app:layout_constraintBottom_toBottomOf="@id/option_config"
+            app:layout_constraintEnd_toEndOf="@id/option_config"
+            app:layout_constraintStart_toStartOf="@id/option_config"
+            app:layout_constraintTop_toTopOf="@id/option_config" />
 
-    <ImageButton
-        android:id="@+id/btn_leave"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/transparent"
-        android:src="@drawable/baseline_exit_to_app_24"
-        app:layout_constraintTop_toTopOf="@id/option_logout"
-        app:layout_constraintBottom_toBottomOf="@id/option_logout"
-        app:layout_constraintStart_toStartOf="@id/option_logout"
-        app:layout_constraintEnd_toEndOf="@id/option_logout"/>
+        <ImageView
+            android:id="@+id/option_exit"
+            android:layout_width="206sp"
+            android:layout_height="197sp"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="@id/option_config"
+            app:layout_constraintEnd_toEndOf="@id/option_scan"
+            app:layout_constraintStart_toEndOf="@id/option_config"
+            app:layout_constraintTop_toTopOf="@id/option_config" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageButton
+            android:id="@+id/btn_leave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:src="@drawable/iconexit"
+            app:layout_constraintBottom_toBottomOf="@id/option_exit"
+            app:layout_constraintEnd_toEndOf="@id/option_exit"
+            app:layout_constraintStart_toStartOf="@id/option_exit"
+            app:layout_constraintTop_toTopOf="@id/option_exit" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

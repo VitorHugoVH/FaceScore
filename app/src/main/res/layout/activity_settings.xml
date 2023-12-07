@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/rosa"
+    tools:context=".view.config.SettingsActivity">
+
+    <ImageView
+        android:id="@+id/img_return_home"
+        android:layout_width="41dp"
+        android:layout_height="50dp"
+        android:backgroundTint="@color/rosa"
+        android:src="@drawable/baseline_arrow_back_24"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/txt_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CONFIGURAÇÕES"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <View
+        android:id="@+id/view_block_privacidade"
+        android:layout_width="370dp"
+        android:layout_height="65dp"
+        android:background="@drawable/div_config"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintTop_toBottomOf="@id/txt_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_privacidade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Privacidade da conta"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:paddingStart="10dp"
+        android:paddingTop="10dp"
+        app:layout_constraintStart_toStartOf="@id/view_block_privacidade"
+        app:layout_constraintTop_toTopOf="@id/view_block_privacidade"/>
+
+    <TextView
+        android:id="@+id/txt_privacidade_legenda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Conta invisível para outros usuários"
+        android:textColor="@color/legenda_config"
+        android:textSize="10sp"
+        android:paddingStart="10dp"
+        app:layout_constraintTop_toBottomOf="@id/txt_privacidade"
+        app:layout_constraintStart_toStartOf="@id/view_block_privacidade"/>
+
+    <Switch
+        android:id="@+id/switch_privacidade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingEnd="10dp"
+        app:layout_constraintTop_toTopOf="@id/view_block_privacidade"
+        app:layout_constraintBottom_toBottomOf="@id/view_block_privacidade"
+        app:layout_constraintEnd_toEndOf="@id/view_block_privacidade"/>
+
+    <View
+        android:id="@+id/view_block_notificacoes"
+        android:layout_width="370dp"
+        android:layout_height="65dp"
+        android:background="@drawable/div_config"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintTop_toBottomOf="@id/view_block_privacidade"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_notificacoes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Notificações"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:paddingStart="10dp"
+        android:paddingTop="10dp"
+        app:layout_constraintStart_toStartOf="@id/view_block_notificacoes"
+        app:layout_constraintTop_toTopOf="@id/view_block_notificacoes"/>
+
+    <TextView
+        android:id="@+id/txt_notificacoes_legenda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Permitir notificações do aplicativo"
+        android:textColor="@color/legenda_config"
+        android:textSize="10sp"
+        android:paddingStart="10dp"
+        app:layout_constraintTop_toBottomOf="@id/txt_notificacoes"
+        app:layout_constraintStart_toStartOf="@id/view_block_notificacoes"/>
+
+    <Switch
+        android:id="@+id/switch_notificacoes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingEnd="10dp"
+        app:layout_constraintTop_toTopOf="@id/view_block_notificacoes"
+        app:layout_constraintBottom_toBottomOf="@id/view_block_notificacoes"
+        app:layout_constraintEnd_toEndOf="@id/view_block_notificacoes"/>
+
+    <View
+        android:id="@+id/view_block_excluir"
+        android:layout_width="370dp"
+        android:layout_height="65dp"
+        android:background="@drawable/div_config"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintTop_toBottomOf="@id/view_block_notificacoes"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_excluir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Excluir conta"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:paddingStart="10dp"
+        android:paddingTop="10dp"
+        app:layout_constraintStart_toStartOf="@id/view_block_excluir"
+        app:layout_constraintTop_toTopOf="@id/view_block_excluir"/>
+
+    <TextView
+        android:id="@+id/txt_excluir_legenda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sua conta será excluída permanentemente"
+        android:textColor="@color/legenda_config"
+        android:textSize="10sp"
+        android:paddingStart="10dp"
+        app:layout_constraintTop_toBottomOf="@id/txt_excluir"
+        app:layout_constraintStart_toStartOf="@id/view_block_excluir"/>
+
+    <ImageButton
+        android:id="@+id/btn_excluir_conta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/transparent"
+        android:src="@drawable/baseline_restore_from_trash_24"
+        app:layout_constraintStart_toStartOf="@id/switch_notificacoes"
+        app:layout_constraintTop_toTopOf="@id/view_block_excluir"
+        app:layout_constraintBottom_toBottomOf="@id/view_block_excluir"
+        app:layout_constraintEnd_toEndOf="@id/view_block_excluir"/>
+
+    <ImageView
+        android:id="@+id/img_cloud"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="4dp"
+        android:src="@drawable/nuvem_rosa"
+        app:layout_constraintTop_toBottomOf="@id/view_block_excluir"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
