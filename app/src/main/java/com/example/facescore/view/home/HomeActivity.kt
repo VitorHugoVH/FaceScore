@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.ImageButton
 import com.example.facescore.R
 import com.example.facescore.view.config.SettingsActivity
+import com.example.facescore.view.face.FaceActivity
 import com.example.facescore.view.formlogin.LoginActivity
 import com.example.facescore.view.profile.ProfileActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -39,6 +40,14 @@ class HomeActivity : AppCompatActivity() {
     btnConfig.setOnClickListener {
       val telaConfig = Intent(this, SettingsActivity::class.java)
       startActivity(telaConfig)
+    }
+
+    // Função botão ir para tela de FaceDetection
+
+    val btnFace = findViewById<ImageButton>(R.id.btn_scan)
+    btnFace.setOnClickListener {
+      val telaFace = Intent(this, FaceActivity::class.java)
+      startActivity(telaFace)
     }
   }
 }

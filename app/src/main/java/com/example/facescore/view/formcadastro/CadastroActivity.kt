@@ -25,6 +25,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import java.text.SimpleDateFormat
@@ -116,7 +117,9 @@ class CadastroActivity : AppCompatActivity() {
           "email" to email,
           "senha" to password,
           "nascimento" to dateOfBirth,
-          "genero" to selectedGenero
+          "genero" to selectedGenero,
+          "dataCriacao" to FieldValue.serverTimestamp(),
+          "privado" to false
         )
 
         auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener{ cadastro ->

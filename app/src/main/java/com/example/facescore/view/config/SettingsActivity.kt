@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import com.google.firebase.firestore.Query
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Switch
@@ -18,6 +19,7 @@ import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.UserProfileChangeRequest
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import org.checkerframework.checker.units.qual.Length
@@ -101,19 +103,70 @@ class SettingsActivity : AppCompatActivity() {
     }
   }
 
+  private fun recalcularRankings() {
+    val usuariosRef = db.collection("Usuarios")
+
+    usuariosRef
+      .whereEqualTo("privado", false)
+      .orderBy("pontuacaoRosto", Query.Direction.DESCENDING)
+      .get()
+      .addOnSuccessListener { result ->
+        if (!result.isEmpty) {
+          val usuariosOrdenados = result.documents.sortedByDescending {
+            it.getDouble("pontuacaoRosto") ?: 0.0
+          }
+
+          var ranking = 1
+          for (usuario in usuariosOrdenados) {
+            val userId = usuario.id
+            atualizarPosicaoRanking(userId, ranking)
+            ranking++
+          }
+
+          Log.d("SettingsActivity", "Rankings recalculados com sucesso")
+        }
+      }
+      .addOnFailureListener { exception ->
+        Log.e("SettingsActivity", "Falha ao recalcular rankings: $exception")
+      }
+  }
+
+  private fun atualizarPosicaoRanking(userId: String, novaPosicao: Int) {
+    val userRef = FirebaseFirestore.getInstance().collection("Usuarios").document(userId)
+
+    // Atualizar o campo ranking
+    userRef.update("ranking", novaPosicao)
+      .addOnSuccessListener {
+        Log.d("Firestore", "Posição do ranking atualizada com sucesso para $novaPosicao!")
+      }
+      .addOnFailureListener { exception ->
+        Log.e("Firestore", "Falha ao atualizar posição do ranking: $exception")
+      }
+  }
+
   private fun atualizarPrivacidade(usuarioId: String?, privado: Boolean) {
     usuarioId?.let { uid ->
       val documentReference = db.collection("Usuarios").document(uid)
 
+      // Atualiza o campo "privado"
       documentReference.update("privado", privado)
         .addOnSuccessListener {
+          val mensagem = if (privado) "Sua conta está privada" else "Sua conta está pública"
+          val toastPrivacidade = Toast.makeText(this, mensagem, Toast.LENGTH_SHORT)
+          toastPrivacidade.show()
 
-          if(privado) {
-            val toastPrivado = Toast.makeText(this, "Sua conta está privada", Toast.LENGTH_SHORT)
-            toastPrivado.show()
-          } else {
-            val toastPublico = Toast.makeText(this, "Sua conta está pública", Toast.LENGTH_SHORT)
-            toastPublico.show()
+          // Recalcula os rankings
+          recalcularRankings()
+
+          // Se a conta estava privada e agora é pública, remove o campo "ranking"
+          if (privado) {
+            documentReference.update("ranking", FieldValue.delete())
+              .addOnSuccessListener {
+                Log.d("SettingsActivity", "Campo 'ranking' removido com sucesso")
+              }
+              .addOnFailureListener { e ->
+                Log.e("SettingsActivity", "Erro ao remover campo 'ranking': ${e.message}")
+              }
           }
         }
         .addOnFailureListener { e ->
@@ -194,6 +247,10 @@ class SettingsActivity : AppCompatActivity() {
       .delete()
       .addOnSuccessListener {
         Log.d("ExcluirConta", "Dados do Firestore excluídos com sucesso")
+
+        // Recalcula os rankings após excluir os dados do Firestore
+        recalcularRankings()
+
         usuario.delete()
           .addOnSuccessListener {
             Log.d("ExcluirConta", "Conta excluída com sucesso")

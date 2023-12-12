@@ -31,6 +31,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.firestore.FieldValue
 
 class LoginActivity : AppCompatActivity() {
 
@@ -170,7 +171,9 @@ class LoginActivity : AppCompatActivity() {
         "nome" to (nomeGoogle ?: ""),
         "email" to (emailGoogle ?: ""),
         "urlImagemPerfil" to (photoPerfil?.toString() ?: ""),
-        "contaGoogle" to "Conta Google"
+        "contaGoogle" to "Conta Google",
+        "dataCriacao" to FieldValue.serverTimestamp(),
+        "privado" to false
       )
 
       // Adicione o documento ao Firestore
