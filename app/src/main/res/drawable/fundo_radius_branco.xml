@@ -1,0 +1,7 @@
+<!-- rounded_image_background.xml -->
+<shape xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:ignore="ExtraText">
+    <corners android:radius="50dp" />
+    <solid android:color="@color/inputs" />
+</shape>

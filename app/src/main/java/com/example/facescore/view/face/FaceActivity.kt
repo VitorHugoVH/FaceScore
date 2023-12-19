@@ -165,7 +165,7 @@ class FaceActivity : AppCompatActivity() {
             txtRanking.text = "Pontuação: $pontuacao"
           } else {
             // Se não há nem colocação nem pontuação, defina o texto apropriado
-            txtRanking.text = "Sem colocação ou pontuação"
+            txtRanking.text = "Sem colocação"
           }
         } else {
           Log.d("Firestore", "O documento não existe")
@@ -221,6 +221,9 @@ class FaceActivity : AppCompatActivity() {
 
     // Converter BigDecimal para Double
     val pontuacaoDouble = pontuacao.toDouble()
+
+    // Obter a posição atual do usuário antes de atualizar o ranking
+    val posicaoAtual = txtRanking.text.toString()
 
     // Atualizar o campo pontuacaoRosto
     usuariosRef.document(userId!!)

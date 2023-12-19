@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="16dp">
+
+    <View
+        android:id="@+id/person_placar_geral"
+        android:layout_width="400dp"
+        android:layout_height="70dp"
+        android:background="@color/white"
+        android:layout_marginTop="30dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/posicao_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="4"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginStart="20dp"
+        app:layout_constraintTop_toTopOf="@id/person_placar_geral"
+        app:layout_constraintStart_toStartOf="@id/person_placar_geral"
+        app:layout_constraintBottom_toBottomOf="@id/person_placar_geral"/>
+
+    <ImageView
+        android:id="@+id/photo_person"
+        android:layout_width="50dp"
+        android:layout_marginStart="10dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/person_profile"
+        app:layout_constraintTop_toTopOf="@id/person_placar_geral"
+        app:layout_constraintStart_toEndOf="@id/posicao_number"
+        app:layout_constraintBottom_toBottomOf="@id/person_placar_geral"/>
+
+    <TextView
+        android:id="@+id/nome_number4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Usuário 4"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginStart="10dp"
+        app:layout_constraintTop_toTopOf="@id/person_placar_geral"
+        app:layout_constraintStart_toEndOf="@id/photo_person"
+        app:layout_constraintBottom_toBottomOf="@id/person_placar_geral"/>
+
+    <TextView
+        android:id="@+id/pontuacao_placar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="8.8"
+        android:paddingRight="20dp"
+        android:layout_marginEnd="20dp"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:textColor="@color/rosa"
+        app:layout_constraintTop_toTopOf="@id/person_placar_geral"
+        app:layout_constraintEnd_toEndOf="@id/person_placar_geral"
+        app:layout_constraintBottom_toBottomOf="@id/person_placar_geral"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
