@@ -262,15 +262,15 @@ class FaceActivity : AppCompatActivity() {
 
     // Configure a paint para o contorno do rosto em azul
     val paintContorno = Paint()
-    paintContorno.color = Color.BLUE
+    paintContorno.color = Color.RED
     paintContorno.style = Paint.Style.STROKE
     paintContorno.strokeWidth = 5.0f
 
     // Configure a paint para as landmarks em vermelho
     val paintLandmarks = Paint()
-    paintLandmarks.color = Color.RED
+    paintLandmarks.color = Color.BLUE
     paintLandmarks.style = Paint.Style.STROKE
-    paintLandmarks.strokeWidth = 5.0f
+    paintLandmarks.strokeWidth = 2.0f
 
     for (face in faces) {
       val boundingBox = face.boundingBox
@@ -288,7 +288,8 @@ class FaceActivity : AppCompatActivity() {
         FirebaseVisionFaceLandmark.LEFT_EAR,
         FirebaseVisionFaceLandmark.RIGHT_EAR,
         FirebaseVisionFaceLandmark.LEFT_CHEEK,
-        FirebaseVisionFaceLandmark.RIGHT_CHEEK
+        FirebaseVisionFaceLandmark.RIGHT_CHEEK,
+        FirebaseVisionFaceLandmark.MOUTH_BOTTOM,
         // Adicione mais landmarks conforme necessário
       )
 
@@ -315,23 +316,108 @@ class FaceActivity : AppCompatActivity() {
     // Além disso, você pode mostrar os botões "Ok" e "Tentar Novamente" aqui
   }
 
+  // Constantes para normalização e ponderação
+  private val MAX_DISTANCIA_HORIZONTAL = 100.0f
+  private val MAX_DISTANCIA_VERTICAL = 100.0f
+  private val MAX_DISTANCIA_NARIZ = 100.0f
+  private val SIMETRIA_PESO = 0.5f
+  private val FORMATO_PESO = 0.5f
+  private val PONTUACAO_ESCALA = 10.0f
+  private val PROPORCAO_SUPERIOR_PESO = 0.3f
+  private val PROPORCAO_MEDIO_PESO = 0.3f
+  private val PROPORCAO_INFERIOR_PESO = 0.3f
+
   private fun calcularPontuacaoRosto(face: FirebaseVisionFace): String {
+    // Calcular as diferentes pontuações
     val simetriaFacial = calcularSimetriaFacial(face)
     val formatoRosto = calcularFormatoRosto(face)
+    val proporcaoSuperior = calcularProporcaoSuperior(face)
+    val proporcaoMedio = calcularProporcaoMedio(face)
+    val proporcaoInferior = calcularProporcaoInferior(face)
 
-    val simetriaNormalizada = maxOf(0.0f, minOf(1.0f, simetriaFacial))
-    val formatoNormalizado = maxOf(0.0f, minOf(1.0f, formatoRosto))
+    // Ajuste de pesos conforme necessário
+    val pontuacaoTotal = (
+            simetriaFacial * SIMETRIA_PESO +
+                    formatoRosto * FORMATO_PESO +
+                    proporcaoSuperior * PROPORCAO_SUPERIOR_PESO +
+                    proporcaoMedio * PROPORCAO_MEDIO_PESO +
+                    proporcaoInferior * PROPORCAO_INFERIOR_PESO
+            )
 
-    val pontuacaoTotal = simetriaNormalizada + formatoNormalizado
-
+    // Normalizar a pontuação entre 0 e 1
     val pontuacaoNormalizada = pontuacaoTotal.coerceIn(0.0f, 1.0f)
 
-    val pontuacaoFinal = pontuacaoNormalizada * 10.0f
+    // Escalar para uma pontuação final
+    val pontuacaoFinal = pontuacaoNormalizada * PONTUACAO_ESCALA
 
+    // Arredondar a pontuação final
     val pontuacaoArredondado = pontuacaoFinal.toBigDecimal().setScale(1, RoundingMode.HALF_UP)
 
     return "Pontuação: $pontuacaoArredondado"
   }
+
+  private fun calcularProporcaoSuperior(face: FirebaseVisionFace): Float {
+    val leftEye = face.getLandmark(FirebaseVisionFaceLandmark.LEFT_EYE)
+    val rightEye = face.getLandmark(FirebaseVisionFaceLandmark.RIGHT_EYE)
+    val foreheadTop = face.boundingBox.top
+
+    if (leftEye != null && rightEye != null) {
+      val distanciaVerticalOlhos = leftEye.position.y - rightEye.position.y
+      val alturaTesta = foreheadTop - minOf(leftEye.position.y, rightEye.position.y)
+
+      // Normalizar os valores entre 0 e 1
+      val proporcaoVerticalNormalizada = 1.0f - (distanciaVerticalOlhos / MAX_DISTANCIA_VERTICAL)
+      val proporcaoAlturaTestaNormalizada = alturaTesta / MAX_DISTANCIA_VERTICAL
+
+      // Média ponderada dos dois fatores
+      val pesoProporcaoVertical = 0.6f
+      val pesoAlturaTesta = 0.4f
+      return (proporcaoVerticalNormalizada * pesoProporcaoVertical) + (proporcaoAlturaTestaNormalizada * pesoAlturaTesta)
+    }
+
+    return 0.0f
+  }
+
+  private fun calcularProporcaoMedio(face: FirebaseVisionFace): Float {
+    val leftCheek = face.getLandmark(FirebaseVisionFaceLandmark.LEFT_CHEEK)
+    val rightCheek = face.getLandmark(FirebaseVisionFaceLandmark.RIGHT_CHEEK)
+    val noseBase = face.getLandmark(FirebaseVisionFaceLandmark.NOSE_BASE)
+
+    if (leftCheek != null && rightCheek != null && noseBase != null) {
+      val distanciaBochechas = rightCheek.position.x - leftCheek.position.x
+      val larguraNariz = noseBase.position.x - (leftCheek.position.x + rightCheek.position.x) / 2.0f
+
+      // Normalizar os valores entre 0 e 1
+      val proporcaoBochechasNormalizada = 1.0f - (distanciaBochechas / MAX_DISTANCIA_HORIZONTAL)
+      val proporcaoLarguraNarizNormalizada = larguraNariz / MAX_DISTANCIA_NARIZ
+
+      // Média ponderada dos dois fatores
+      val pesoBochechas = 0.6f
+      val pesoLarguraNariz = 0.4f
+      return (
+              (proporcaoBochechasNormalizada * pesoBochechas) +
+                      (proporcaoLarguraNarizNormalizada * pesoLarguraNariz)
+              )
+    }
+
+    return 0.0f
+  }
+
+  private fun calcularProporcaoInferior(face: FirebaseVisionFace): Float {
+    val mouthBottom = face.getLandmark(FirebaseVisionFaceLandmark.MOUTH_BOTTOM)
+    val chinBottom = face.getLandmark(FirebaseVisionFaceLandmark.NOSE_BASE)
+
+    if (mouthBottom != null && chinBottom != null) {
+      val alturaQueixo = chinBottom.position.y - mouthBottom.position.y
+
+      val proporcaoAlturaQueixoNormalizada = alturaQueixo / MAX_DISTANCIA_NARIZ
+
+      return proporcaoAlturaQueixoNormalizada
+    }
+
+    return 0.0f
+  }
+
 
   private fun recalcularRankings(result: QuerySnapshot) {
     val usuariosOrdenados = result.documents.sortedWith(compareByDescending<DocumentSnapshot> {
@@ -370,12 +456,14 @@ class FaceActivity : AppCompatActivity() {
       val distanciaHorizontalOlhos = rightEye.position.x - leftEye.position.x
       val distanciaVerticalNariz = noseBase.position.y - (leftEye.position.y + rightEye.position.y) / 2.0f
 
-      val simetriaHorizontal = 1.0f / distanciaHorizontalOlhos
-      val simetriaVertical = 1.0f / distanciaVerticalNariz
+      val simetriaHorizontal = 1.0f - (distanciaHorizontalOlhos / MAX_DISTANCIA_HORIZONTAL)
+      val simetriaVertical = 1.0f - (distanciaVerticalNariz / MAX_DISTANCIA_VERTICAL)
 
-      // Considere normalizar e ponderar os valores conforme necessário
+      // Normalizar os valores entre 0 e 1
+      val simetriaNormalizada = maxOf(0.0f, minOf(1.0f, (simetriaHorizontal + simetriaVertical) / 2.0f))
 
-      return (simetriaHorizontal + simetriaVertical) / 2.0f
+      // Ponderar conforme necessário
+      return simetriaNormalizada * SIMETRIA_PESO
     }
 
     return 0.0f
@@ -387,9 +475,13 @@ class FaceActivity : AppCompatActivity() {
     val mouthRight = face.getLandmark(FirebaseVisionFaceLandmark.MOUTH_RIGHT)
 
     if (noseBase != null && mouthLeft != null && mouthRight != null) {
-      val distanciaNariz =
-        noseBase.position.x - (mouthLeft.position.x + mouthRight.position.x) / 2.0f
-      return 1.0f / distanciaNariz
+      val distanciaNariz = noseBase.position.x - (mouthLeft.position.x + mouthRight.position.x) / 2.0f
+
+      // Normalizar os valores entre 0 e 1
+      val formatoNormalizado = maxOf(0.0f, minOf(1.0f, 1.0f - (distanciaNariz / MAX_DISTANCIA_NARIZ)))
+
+      // Ponderar conforme necessário
+      return formatoNormalizado * FORMATO_PESO
     }
 
     return 0.0f
