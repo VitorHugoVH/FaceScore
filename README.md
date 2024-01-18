@@ -1,4 +1,4 @@
-# FaceScore - Aplicativo de Reconhecimento Facial
+# FaceScore - Aplicativo de Reconhecimento Simétricos Facial
 
 ![FaceScore Logo](https://github.com/VitorHugoVH/FaceScore/blob/master/assets/logo.png)
 
