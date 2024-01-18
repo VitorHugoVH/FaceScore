@@ -56,8 +56,8 @@ Contribuições são bem-vindas! Sinta-se à vontade para abrir issues, propor m
 
 ## Contato
 
-- [Instagram](https://www.instagram.com/seu_perfil)
-- [E-mail](mailto:seu_email@gmail.com)
-- [LinkedIn](https://www.linkedin.com/in/seu_perfil)
+- [Instagram](https://www.instagram.com/vitoorhugoo22)
+- [E-mail](mailto:vhfraga007@gmail.com)
+- [LinkedIn](https://www.linkedin.com/in/vitorhugoserondefraga)
 
 Divirta-se utilizando o **FaceScore**! 🌟
